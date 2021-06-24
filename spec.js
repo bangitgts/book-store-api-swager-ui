@@ -5,7 +5,7 @@ var spec = {
         version: "1.0", // Phiên bản API
         title: "Book Store Shop",
     },
-    host: "45.77.12.16:5000", // Server và port deploy API
+    host: "45.77.12.16:4000", // Server và port deploy API
     basePath: "/", // Đường dẫn tới API
     tags: [
         // Danh sách các nhóm API: admin, users, images,...
