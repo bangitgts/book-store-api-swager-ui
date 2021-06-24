@@ -212,6 +212,13 @@ var spec = {
                 operationId: "changeInformationAccount",
                 produces: ["application/json"], // Loại dữ liệu trả về
                 parameters: [
+                     { in: "formData", // Tham số được gửi lên từ form
+                        name: "name", // Tên tham số
+                        //required: "true", // Tham số là bắt buộc
+                        schema: {
+                            type: "string", // Loại dữ liệu của tham số là chuỗi
+                        },
+                    },
                     // Các tham số
                     { in: "formData", // Tham số được gửi lên từ form
                         name: "address", // Tên tham số
