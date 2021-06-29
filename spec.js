@@ -211,8 +211,7 @@ var spec = {
                 consumes: ["application/x-www-form-urlencoded"],
                 operationId: "changeInformationAccount",
                 produces: ["application/json"], // Loại dữ liệu trả về
-                parameters: [
-                     { in: "formData", // Tham số được gửi lên từ form
+                parameters: [{ in: "formData", // Tham số được gửi lên từ form
                         name: "name", // Tên tham số
                         //required: "true", // Tham số là bắt buộc
                         schema: {
@@ -312,6 +311,7 @@ var spec = {
                 }, ],
             },
         },
+
         "/view/{id}": {
             // Đường dẫn. Kết hợp với host và basePath sẽ thành localhost:3000/api/v1/admin/
             get: {
@@ -348,6 +348,76 @@ var spec = {
                 security: [{
                     api_key: [],
                 }, ],
+            },
+        },
+
+        "/account/forgotpassword": {
+            // Đường dẫn. Kết hợp với host và basePath sẽ thành localhost:3000/api/v1/admin/
+            post: {
+                // Phương thức gửi request: get, post, put, delete
+                tags: ["Chỉnh Sửa Account"],
+                summary: "Forgot Password Account",
+                consumes: ["application/x-www-form-urlencoded"],
+                operationId: "forgotPasswordAccount",
+                produces: ["application/json"], // Loại dữ liệu trả về
+                parameters: [
+                    // Các tham số
+                    { in: "formData", // Tham số được gửi lên từ form
+                        name: "email", // Tên tham số
+                        required: "true", // Tham số là bắt buộc
+                        schema: {
+                            type: "string", // Loại dữ liệu của tham số là chuỗi
+                        },
+                    },
+                ],
+                responses: {
+                    200: {
+                        description: "Change password successfully",
+                    },
+                },
+                security: [],
+            },
+        },
+        "/account/newpassword/{email}": {
+            // Đường dẫn. Kết hợp với host và basePath sẽ thành localhost:3000/api/v1/admin/
+            put: {
+                // Phương thức gửi request: get, post, put, delete
+                tags: ["Chỉnh Sửa Account"],
+                summary: "Forgot Password Account",
+                consumes: ["application/x-www-form-urlencoded"],
+                operationId: "newforgotPasswordAccount",
+                produces: ["application/json"], // Loại dữ liệu trả về
+                parameters: [
+                    // Các tham số
+                    { in: "formData", // Tham số được gửi lên từ form
+                        name: "token", // Tên tham số
+                        required: "true", // Tham số là bắt buộc
+                        schema: {
+                            type: "string", // Loại dữ liệu của tham số là chuỗi
+                        },
+                    },
+                    {
+                        name: "email",
+                        in: "path",
+                        required: "true",
+                        schema: {
+                            type: "string", // Loại dữ liệu của tham số là chuỗi
+                        },
+                    },
+                    { in: "formData", // Tham số được gửi lên từ form
+                        name: "newPassword", // Tên tham số
+                        required: "true", // Tham số là bắt buộc
+                        schema: {
+                            type: "string", // Loại dữ liệu của tham số là chuỗi
+                        },
+                    },
+                ],
+                responses: {
+                    200: {
+                        description: "Change password successfully",
+                    },
+                },
+                security: [],
             },
         },
         "/product/cart": {
@@ -471,7 +541,7 @@ var spec = {
                         in: "path",
                         required: true,
                         type: "string",
-                    }
+                    },
                 ],
                 produces: ["application/json"], // Loại dữ liệu trả về
                 responses: {
@@ -505,7 +575,7 @@ var spec = {
                         in: "path",
                         required: true,
                         type: "string",
-                    }
+                    },
                 ],
                 produces: ["application/json"], // Loại dữ liệu trả về
                 responses: {
